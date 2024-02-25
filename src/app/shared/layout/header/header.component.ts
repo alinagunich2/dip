@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit{
 
   isLoged:boolean = false
   // name=this.authService.userInfo
-  name:string=''
+  name:string|null = this.authService.userInfo
 
   constructor(private authService:AuthService,
     private _snackBar:MatSnackBar,
