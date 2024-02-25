@@ -1,0 +1,49 @@
+<div class="login">
+    <div class="container">
+        <div class="auth-body">
+            <div class="auth-title">Войти в личный кабинет</div>
+            <div class="auth-form" [formGroup]="loginForm">
+                <input type="text" placeholder="Электронная почта"
+                [ngStyle]="{'border-color':loginForm.get('email')?.invalid
+            &&(loginForm.get('email')?.dirty || loginForm.get('email')?.touched)? 'red':''}"
+                formControlName="email"
+                >
+
+                <div class="" style="color: red;"
+                *ngIf="loginForm.get('email')?.invalid
+                &&(loginForm.get('email')?.dirty || loginForm.get('email')?.touched)"
+
+                >Введите эл почту</div>
+
+                <input type="password" placeholder="Пароль"
+                [ngStyle]="{'border-color':loginForm.get('password')?.invalid
+                &&(loginForm.get('password')?.dirty || loginForm.get('password')?.touched)? 'red':''}"    
+               formControlName="password"
+               >
+
+               <div class="" style="color: red;"
+               *ngIf="loginForm.get('password')?.invalid
+               &&(loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+
+               >Введите пароль</div>
+
+
+                <div class="auth-chetbox">
+                    <input type="checkbox" id="remember"
+                    formControlName="rememberMe"
+                    >
+                    <label for="remember">Запомнить меня</label>
+                </div>
+                <div class="auth-button">
+                    <button class="button button-auth" [disabled]="loginForm.invalid" (click)="login()">Войти</button>
+                </div>
+                <div class="auth-link">
+                    Нет аккаунта? <a routerLink="/signup">Пройдите регистрацию</a>
+                </div>
+            </div>
+        </div>
+        <div class="auth-img">
+            <img src="/assets/img/login.png" alt="">
+        </div>
+    </div>
+</div>
